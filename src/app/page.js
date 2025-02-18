@@ -105,11 +105,23 @@ export default function Home() {
 
           <input type="text" name="zip" placeholder="ZIP / POSTAL CODE" required />
           <p className="form-label">CHOOSE YOUR SERVICE:</p>
-          <div className="service-options">
-            <label><input type="checkbox" name="service" value="Solar Panel Cleaning" /> Solar Panel Cleaning</label>
-            <label><input type="checkbox" name="service" value="Window Cleaning" /> Window Cleaning</label>
-            <label><input type="checkbox" name="service" value="Gutter Cleaning" /> Gutter Cleaning</label>
-            <label><input type="checkbox" name="service" value="Bird Proofing" /> Bird Proofing</label>
+          <div class="service-options">
+            <label>
+              <input type="checkbox" name="service1" value="service1"/>
+              <span class="checkbox-text">Solar Panel Cleaning</span>
+            </label>
+            <label>
+              <input type="checkbox" name="service2" value="service2"/>
+              <span class="checkbox-text">Window Cleaning</span>
+            </label>
+            <label>
+              <input type="checkbox" name="service1" value="service1"/>
+              <span class="checkbox-text">Gutter Cleaning</span>
+            </label>
+            <label>
+              <input type="checkbox" name="service2" value="service2"/>
+              <span class="checkbox-text">Bird Proofing</span>
+            </label>
           </div>
 
           <p className="form-label">HOW DID YOU HEAR ABOUT US?</p>
@@ -129,6 +141,7 @@ export default function Home() {
           
           <button type="submit">SUBMIT</button>
           {successMessage && <p style={{ color: 'green' }}>Your request has been sent!</p>}
+          <input />
         </form>
       </div>
 
