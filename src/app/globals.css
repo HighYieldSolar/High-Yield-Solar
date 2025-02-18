@@ -1,4 +1,3 @@
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -14,50 +13,38 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-/* General Styles */
-body {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600; /* SemiBold */
+  font-family: 'Poppins', sans-serif; /* Ensures all text uses Poppins */
+  font-weight: 600;
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column; /* Stack items vertically */
-  min-height: 100vh; /* Ensures full height */
+  flex-direction: column;
+  min-height: 100vh;
   background-color: #e0e0e0;
   color: #333;
 }
 
 .main-content {
   flex-grow: 1;
-  padding-top: 80px; /* Adjusted to prevent logo overlap */
+  padding-top: 80px;
 }
 
-/* HEADER STYLING */
+/* HEADER */
 header {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #36B4E5; /* Matching reference color */
+  background-color: #36B4E5;
   padding: 15px;
-  padding-left: 0px;
-  padding-right: 0px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   text-align: center;
   transition: all 0.3s ease-in-out;
   z-index: 1000;
 }
 
-/* Adjusted body padding to prevent content from being hidden under the header */
 body {
-  padding-top: 200px;
+  padding-top: 200px; /* Adjusted padding to prevent overlap */
 }
 
-/* BUSINESS NAME & PHONE STACKED */
 .top-bar {
   text-align: center;
   width: 100%;
@@ -67,12 +54,14 @@ body {
   font-weight: 700;
   font-size: 22px;
   display: block;
+  text-align: center;
 }
 
 .phone-number {
   font-weight: 600;
   font-size: 18px;
   display: block;
+  text-align: center;
 }
 
 /* NAVIGATION */
@@ -80,14 +69,14 @@ body {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
   justify-content: center;
+  gap: 10px;
   padding: 0;
   margin: 10px 0 0;
 }
 
 .nav-links li {
-  display: inline;
+  margin: 5px 0;
 }
 
 .nav-links a {
@@ -97,76 +86,67 @@ body {
   padding: 8px 12px;
   border-radius: 5px;
   transition: all 0.3s ease;
-  opacity: 0.9;
   font-size: 16px;
 }
 
-/* HOVER & CLICK EFFECT */
 .nav-links a:hover {
   background-color: black;
   color: white;
 }
 
-.nav-links a:active {
-  transform: scale(0.95);
-  opacity: 1;
-}
-
-/* RESPONSIVE HEADER */
 @media (max-width: 768px) {
   .nav-links {
     flex-direction: column;
     align-items: center;
     gap: 5px;
   }
-  .business-name {
-    font-size: 20px;
-  }
-  .phone-number {
-    font-size: 16px;
-  }
 }
 
-/* Quote Form */
+/* QUOTE SECTION */
 .quote-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #e0e0e0;
-  margin: 0px auto;
-  padding: 0px;
-  border-radius: 0px;
+  margin: 0 auto;
+  padding: 15px;
+  border-radius: 5px;
   width: 90%;
   max-width: 600px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border: 2px solid black; /* Ensuring clear border visibility */
+  border: 2px solid black;
+  text-align: center; /* Ensures all content inside is centered */
 }
 
 .quote-info {
-  width: 95%;
+  width: 100%;
   text-align: center;
   color: rgb(0, 0, 0);
 }
 
+/* BUSINESS LOGO CENTERED */
 .business-logo {
-  display: center;
+  display: block; 
   width: 100%;
   max-width: 350px;
-  margin-bottom: 10px;
+  margin: 0 auto 10px auto; /* Centers the logo */
 }
 
+/* QUOTE FORM */
 .quote-form {
   background: #36B4E5;
   padding: 20px;
   border-radius: 10px;
-  width: 60%;
+  width: 90%;
+  max-width: 500px;
   font-family: 'Poppins', sans-serif;
-  border: 2px solid black; /* Fixed right border issue */
+  border: 2px solid black;
   box-sizing: border-box;
+  text-align: center;
 }
 
 input, select, textarea {
-  width: calc(100% - 20px);
+  width: 95%;
   padding: 10px;
   margin-bottom: 10px;
   border: 2px solid black;
@@ -174,51 +154,34 @@ input, select, textarea {
   font-size: 14px;
 }
 
-/* Ensure checkboxes and labels align properly */
+/* CHECKBOX FIX */
 .checkbox-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 5px; /* Reduce spacing */
-  justify-content: flex-start; /* Align everything to the left */
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
 }
 
 .service-options {
   display: flex;
   flex-direction: column;
-  gap: 5px; /* Reduce spacing between rows */
-  align-items: flex-start; /* Keep everything aligned to the left */
+  align-items: start;
 }
 
 .service-options label {
-  display: inline-flex; /* Ensures checkbox and text stay on the same line */
-  align-items: center;
-  gap: 5px; /* Reduce space between checkbox and text */
-  font-size: 16px; /* Adjust text size */
-  white-space: nowrap; /* Prevents text from wrapping */
-}
-  
-.service-options input[type="checkbox"] {
-  margin: 0; /* Removes any extra margins */
-  transform: scale(1.1); /* Keeps checkbox size slightly larger for visibility */
-}
-
-
-.myinput[type="checkbox"]:before {
-  position: relative;
-  display: block;
-  width: 11px;
-  height: 11px;
-  border: 1px solid #808080;
-  content: "";
-  background: #FFF;
-}
-
-.checkbox-container label {
   display: flex;
   align-items: center;
   gap: 5px;
+  font-size: 16px;
+  white-space: nowrap;
 }
 
+.service-options input[type="checkbox"] {
+  transform: scale(1.2);
+}
+
+/* BUTTON */
 button {
   background: black;
   color: white;
@@ -235,37 +198,27 @@ button:hover {
   border: 2px solid black;
 }
 
-/* Required and Anti-Spam Check Labels */
-.required, .anti-spam {
-  color: red;
-  font-weight: bold;
-}
-
-/* Footer */
+/* FOOTER */
 footer {
   margin-top: auto;
   width: 100%;
   text-align: center;
   background: rgb(102, 102, 102);
   color: white;
-  padding: 0px;
+  padding: 10px;
 }
 
 @media (max-width: 768px) {
   .quote-container {
     width: 95%;
-    padding: 15px;
-    padding-left: 0px;
-    padding-right: 0px;
   }
   .quote-form {
     width: 95%;
   }
   input, select, textarea {
-    width: 95%;
+    width: 100%;
   }
   .checkbox-container {
-    flex-direction: column;
     align-items: center;
   }
 }
