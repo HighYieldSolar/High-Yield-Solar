@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - High Yield Solar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="business-info">
+                <span class="business-name">High Yield Solar</span>
+                <span class="phone-number">(951)-505-1147 | info@highyieldsolar.com</span>
+            </div>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="quote.html">Get a Quote</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <h1>Contact Us</h1>
+        <div class="contact-container">
+            <p>If you have any questions or would like to request more information about our services, feel free to reach out to us using the contact form below or via phone or email.</p>
+
+            <h2>Contact Form</h2>
+            <form action="https://formspree.io/f/mgvolodq" method="POST" class="contact-form">
+                <input type="hidden" name="_subject" value="New Contact Request">
+                
+                <div class="form-row">
+                    <input type="text" name="first_name" placeholder="First Name" required>
+                    <input type="text" name="last_name" placeholder="Last Name" required>
+                </div>
+                <div class="form-row">
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input id="phone" name="phone" type="tel" placeholder="Phone Number" required>
+                </div>
+                
+                <textarea name="message" placeholder="Your Message" required></textarea>
+
+                <button type="submit">Submit</button>
+
+                <p id="success-message" style="display:none; color: green;">Your message has been sent!</p>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 High Yield Solar. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelector(".contact-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            fetch(this.action, {
+                method: this.method,
+                body: new FormData(this),
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    document.getElementById("success-message").style.display = "block";
+                    this.reset();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

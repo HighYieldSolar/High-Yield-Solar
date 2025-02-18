@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High Yield Solar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="business-info">
+                <span class="business-name">High Yield Solar</span>
+                <span class="phone-number">(951)-505-1147 | info@highyieldsolar.com</span>
+            </div>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Get a Quote</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+
+        <div class="quote-container">
+            <!-- Left Section: Logo & Business Info -->
+            <div class="quote-info">
+                <img src="https://highyieldsolar.wordpress.com/wp-content/uploads/2025/01/final-black-tp.png?resize=219%2C219" alt="High Yield Solar Logo" class="business-logo">
+                <h2>Why Choose High Yield Solar?</h2>
+                <p>We provide top-quality solar panel cleaning, window cleaning, gutter cleaning, and bird proofing services. Our expert team ensures your panels stay efficient and your home stays clean. Get a free quote today!</p>
+            </div>
+
+
+
+    <form action="https://formspree.io/f/mgvolodq" method="POST" class="quote-form">
+        <input type="hidden" name="_subject" value="New Quote Request">
+
+        <div class="form-row">
+            <input type="text" name="first_name" placeholder="FIRST NAME" required>
+            <input type="text" name="last_name" placeholder="LAST NAME" required>
+        </div>
+        <div class="form-row">
+            <input type="email" name="email" placeholder="EMAIL" required>
+            <input id="phone" name="phone" type="tel" placeholder="Enter phone number" required>
+        </div>
+        <label for="address">Address</label>
+        <input id="address" name="address" type="text" placeholder="Start typing your address..." required>
+
+    
+        <div class="form-row">
+            <input type="text" name="city" placeholder="CITY" required>
+            <select name="state" required>
+                <option value="">STATE</option>
+                <option value="California">California</option>
+            </select>
+        </div>
+    
+        <input type="text" name="zip" placeholder="ZIP / POSTAL CODE" required>
+    
+        <p class="form-label">CHOOSE YOUR SERVICE (CHECK ALL THAT APPLY): <span class="required">(REQUIRED)</span></p>
+        
+        <div class="service-options">
+            <label><input type="checkbox" name="service" value="Solar Panel Cleaning"> Solar Panel Cleaning</label>
+            <label><input type="checkbox" name="service" value="Window Cleaning"> Window Cleaning</label>
+            <label><input type="checkbox" name="service" value="Gutter Cleaning"> Gutter Cleaning</label>
+            <label><input type="checkbox" name="service" value="Bird Proofing"> Bird Proofing</label>
+        </div>
+    
+        <p class="form-label">HOW DID YOU HEAR ABOUT US? <span class="required">(REQUIRED)</span></p>
+        <select name="referral" required>
+            <option value="">Select</option>
+            <option value="Google">Google</option>
+            <option value="Facebook">Facebook</option>
+            <option value="Instagram">Instagram</option>
+            <option value="Referral">Referral</option>
+            <option value="Referral">Vehicle</option>
+        </select>
+    
+        <textarea name="message" placeholder="Additional Information (Optional)"></textarea>
+
+        <label for="captcha">What is 3 + 4?</label> <span class="anti-spam">(Anti-Spam Check)</span></p>
+        <input type="text" id="captcha" name="captcha" required>
+            
+    
+        <button type="submit">SUBMIT</button>
+
+
+        <p id="success-message" style="display:none; color: green;">Your request has been sent!</p>
+    </form>
+</div>
+    
+    <script>
+    document.querySelector(".quote-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        fetch(this.action, {
+            method: this.method,
+            body: new FormData(this),
+            headers: { 'Accept': 'application/json' }
+        }).then(response => {
+            if (response.ok) {
+                document.getElementById("success-message").style.display = "block";
+                this.reset();
+            }
+        });
+    });
+    </script>
+
+<script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+        var captchaInput = document.getElementById("captcha").value;
+        if (captchaInput != "7") { // Correct answer to "3 + 4"
+            alert("Incorrect CAPTCHA answer. Please try again.");
+            event.preventDefault();
+        }
+    });
+    </script>
+      
+    <!-- Phone Number Validation & Auto-Format -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/libphonenumber-js/1.9.44/libphonenumber-js.min.js"></script>
+    <script>
+    document.getElementById("phone").addEventListener("blur", function() {
+        var phoneInput = this.value.trim();
+        try {
+            var parsed = libphonenumber.parsePhoneNumberFromString(phoneInput, "US");
+            if (parsed && parsed.isValid()) {
+                this.value = parsed.formatInternational(); // Auto-format to international format
+            } else {
+                alert("Invalid phone number. Please enter a valid number.");
+                this.value = "";
+            }
+        } catch (error) {
+            alert("Invalid phone number format.");
+            this.value = "";
+        }
+    });
+    </script>
+    
+    
+    <footer>
+        <p>&copy; 2025 High Yield Solar. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
