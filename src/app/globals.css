@@ -14,4 +14,15 @@ body {
       -0.5px  0.5px 0 black,
        0.5px  0.5px 0 black;
   }
-}
+
+  html, body {
+    overflow-x: hidden;
+  }
+
+  @media (max-width: 640px) {
+    .btn {
+      padding: 4px 8px;
+    }
+  }
+  
+}  

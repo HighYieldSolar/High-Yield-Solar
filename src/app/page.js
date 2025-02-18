@@ -63,12 +63,14 @@ export default function Home() {
       </header>
 
       <nav className="pt-24 pb-4 flex justify-center space-x-4 bg-black shadow-md px-4 sm:px-0 flex-wrap">
-  <Link className="btn btn-sm btn-outline text-xs sm:text-base" href="/">Home</Link>
-  <Link className="btn btn-sm btn-outline text-xs sm:text-base" href="/">Get a Quote</Link>
-  <Link className="btn btn-sm btn-outline text-xs sm:text-base" href="/services">Services</Link>
-  <Link className="btn btn-sm btn-outline text-xs sm:text-base" href="/contact">Contact</Link>
-  <Link className="btn btn-sm btn-outline text-xs sm:text-base" href="/about">About</Link>
-</nav>
+        <Link className="btn btn-sm btn-outline text-xs sm:text-base mb-2 sm:mb-0" href="/">Home</Link>
+        <Link className="btn btn-sm btn-outline text-xs sm:text-base mb-2 sm:mb-0" href="/">Get a Quote</Link>
+        <Link className="btn btn-sm btn-outline text-xs sm:text-base mb-2 sm:mb-0" href="/services">Services</Link>
+        <Link className="btn btn-sm btn-outline text-xs sm:text-base mb-2 sm:mb-0" href="/contact">Contact</Link>
+        <Link className="btn btn-sm btn-outline text-xs sm:text-base" href="/about">About</Link>
+      </nav>
+
+
 
       {/* QUOTE SECTION */}
       <div className="flex flex-col items-center mt-10">
