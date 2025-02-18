@@ -12,16 +12,15 @@ export default function Home() {
   useEffect(() => {
     const phoneInput = document.getElementById('phone');
     phoneInput?.addEventListener('blur', () => {
-      try {
-        const parsed = libphonenumber.parsePhoneNumberFromString(phoneInput.value.trim(), 'US');
-        if (parsed && parsed.isValid()) {
-          phoneInput.value = parsed.formatInternational();
-        } else {
-          alert('Invalid phone number. Please enter a valid number.');
-          phoneInput.value = '';
-        }
-      } catch (error) {
-        alert('Invalid phone number format.');
+      const phoneValue = phoneInput.value.trim();
+
+      // Define a regex to allow phone numbers like 5551234567, (555) 123-4567, 555-123-4567, and 555 123 4567
+      const phoneRegex = /^(?:\(?\d{3}\)?[\s\-]?)?\d{3}[\s\-]?\d{4}$/;
+
+      if (phoneRegex.test(phoneValue)) {
+        phoneInput.value = phoneValue.replace(/[\s\-()]/g, ''); // Remove non-numeric characters
+      } else {
+        alert('Invalid phone number format. Please enter a valid number.');
         phoneInput.value = '';
       }
     });
@@ -70,8 +69,6 @@ export default function Home() {
         <Link className="btn btn-sm btn-outline text-xs sm:text-base" href="/about">About</Link>
       </nav>
 
-
-
       {/* QUOTE SECTION */}
       <div className="flex flex-col items-center mt-10">
         <Image src="/images/tp.png" width={600} height={600} alt="High Yield Solar Logo" className="mb-4" />
@@ -112,19 +109,19 @@ export default function Home() {
         <p className="mt-4 font-bold text-black">Choose Your Service:</p>
         <div className="grid grid-cols-2 gap-4 mt-2">
           <label className="flex items-center space-x-2 text-black font-bold">
-          <input type="checkbox" defaultChecked className="checkbox bg-white [--chkbg:theme(colors.white)] [--chkfg:black] checked:border-black" />
+          <input type="checkbox" className="checkbox bg-white checked:border-black" />
             <span>Solar Panel Cleaning</span>
           </label>
           <label className="flex items-center space-x-2 text-black font-bold">
-          <input type="checkbox" defaultChecked className="checkbox bg-white [--chkbg:theme(colors.white)] [--chkfg:black] checked:border-black" />
+          <input type="checkbox" className="checkbox bg-white checked:border-black" />
             <span>Window Cleaning</span>
           </label>
           <label className="flex items-center space-x-2 text-black font-bold">
-          <input type="checkbox" defaultChecked className="checkbox bg-white [--chkbg:theme(colors.white)] [--chkfg:black] checked:border-black" />
+          <input type="checkbox" className="checkbox bg-white checked:border-black" />
             <span>Gutter Cleaning</span>
           </label>
           <label className="flex items-center space-x-2 text-black font-bold">
-          <input type="checkbox" defaultChecked className="checkbox bg-white [--chkbg:theme(colors.white)] [--chkfg:black] checked:border-black" />
+          <input type="checkbox" className="checkbox bg-white checked:border-black" />
             <span>Bird Proofing</span>
           </label>
         </div>
