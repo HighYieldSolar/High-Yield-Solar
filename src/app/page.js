@@ -9,6 +9,8 @@ export default function Home() {
   const [captcha, setCaptcha] = useState('');
   const [successMessage, setSuccessMessage] = useState(false);
 
+  const [showModal, setShowModal] = useState(false); // New state for showing the modal
+
   useEffect(() => {
     const phoneInput = document.getElementById('phone');
     phoneInput?.addEventListener('blur', () => {
@@ -43,6 +45,7 @@ export default function Home() {
     if (response.ok) {
       setSuccessMessage(true);
       event.target.reset();
+      setShowModal(true); // Show the modal after successful submission
     }
   };
 
@@ -105,26 +108,27 @@ export default function Home() {
 
         <input type="text" name="zip" placeholder="ZIP / Postal Code" className="input input-bordered w-full mt-4 bg-white" required />
 
-        {/* SERVICES */}
-        <p className="mt-4 font-bold text-black">Choose Your Service:</p>
-        <div className="grid grid-cols-2 gap-4 mt-2">
-          <label className="flex items-center space-x-2 text-black font-bold">
-          <input type="checkbox" className="checkbox bg-white checked:border-black" />
-            <span>Solar Panel Cleaning</span>
-          </label>
-          <label className="flex items-center space-x-2 text-black font-bold">
-          <input type="checkbox" className="checkbox bg-white checked:border-black" />
-            <span>Window Cleaning</span>
-          </label>
-          <label className="flex items-center space-x-2 text-black font-bold">
-          <input type="checkbox" className="checkbox bg-white checked:border-black" />
-            <span>Gutter Cleaning</span>
-          </label>
-          <label className="flex items-center space-x-2 text-black font-bold">
-          <input type="checkbox" className="checkbox bg-white checked:border-black" />
-            <span>Bird Proofing</span>
-          </label>
-        </div>
+{/* SERVICES */}
+<p className="mt-4 font-bold text-black">Choose Your Service:</p>
+<div className="grid grid-cols-2 gap-4 mt-2">
+  <label className="flex items-center space-x-2 text-black font-bold">
+    <input type="checkbox" className="checkbox bg-white checked:border-black" name="solar_panel_cleaning" value="Solar Panel Cleaning" />
+    <span>Solar Panel Cleaning</span>
+  </label>
+  <label className="flex items-center space-x-2 text-black font-bold">
+    <input type="checkbox" className="checkbox bg-white checked:border-black" name="window_cleaning" value="Window Cleaning" />
+    <span>Window Cleaning</span>
+  </label>
+  <label className="flex items-center space-x-2 text-black font-bold">
+    <input type="checkbox" className="checkbox bg-white checked:border-black" name="gutter_cleaning" value="Gutter Cleaning" />
+    <span>Gutter Cleaning</span>
+  </label>
+  <label className="flex items-center space-x-2 text-black font-bold">
+    <input type="checkbox" className="checkbox bg-white checked:border-black" name="bird_proofing" value="Bird Proofing" />
+    <span>Bird Proofing</span>
+  </label>
+</div>
+
 
         {/* REFERRAL */}
         <p className="mt-4 font-bold text-black">How Did You Hear About Us?</p>
@@ -144,16 +148,32 @@ export default function Home() {
         <label className="block mt-4 text-black font-semibold">What is 3 + 4?</label>
         <input type="text" id="captcha" name="captcha" className="input input-bordered w-full mt-2 bg-white" required onChange={(e) => setCaptcha(e.target.value)} />
 
-       {/* SUBMIT BUTTON */}
-      <div className="flex justify-center w-full mt-4">
-      <button className="text-white btn btn-black btn-wide font-semibold w-full max-w-lg">Submit</button>
-      </div>
+        {/* SUBMIT BUTTON */}
+        <div className="flex justify-center w-full mt-4">
+          <button className="text-white btn btn-black btn-wide font-semibold w-full max-w-lg">Submit</button>
+        </div>
       </form>
 
       {/* FOOTER */}
       <footer className="bg-black text-white text-center p-4 mt-10">
         <p>&copy; 2025 High Yield Solar. All rights reserved.</p>
       </footer>
+
+{/* SUCCESS MESSAGE MODAL */}
+{showModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75 z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg text-center max-w-sm w-full">
+            <h3 className="text-xl font-semibold text-black">Thank You for Your Request!</h3>
+            <p className="mt-4 text-black">Your request has been submitted successfully. We&apos;ll be in touch shortly.</p>
+            <button
+              onClick={() => setShowModal(false)}
+              className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }
