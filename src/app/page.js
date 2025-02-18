@@ -62,14 +62,13 @@ export default function Home() {
         </div>
       </header>
 
-      {/* NAVIGATION */}
-      <nav className="pt-24 pb-4 flex justify-center space-x-4 bg-black shadow-md">
-        <Link className="btn btn-sm btn-outline" href="/">Home</Link>
-        <Link className="btn btn-sm btn-outline" href="/">Get a Quote</Link>
-        <Link className="btn btn-sm btn-outline" href="/services">Services</Link>
-        <Link className="btn btn-sm btn-outline" href="/contact">Contact</Link>
-        <Link className="btn btn-sm btn-outline" href="/about">About</Link>
-      </nav>
+      <nav className="pt-24 pb-4 flex justify-center space-x-4 bg-black shadow-md px-4 sm:px-0 flex-wrap">
+  <Link className="btn btn-sm btn-outline text-xs sm:text-base" href="/">Home</Link>
+  <Link className="btn btn-sm btn-outline text-xs sm:text-base" href="/">Get a Quote</Link>
+  <Link className="btn btn-sm btn-outline text-xs sm:text-base" href="/services">Services</Link>
+  <Link className="btn btn-sm btn-outline text-xs sm:text-base" href="/contact">Contact</Link>
+  <Link className="btn btn-sm btn-outline text-xs sm:text-base" href="/about">About</Link>
+</nav>
 
       {/* QUOTE SECTION */}
       <div className="flex flex-col items-center mt-10">
