@@ -5,7 +5,7 @@
 
 import Head from 'next/head';
 import "../globals.css";
-import Link from 'next/link';
+import Link from 'next/link'; // heloooooooo 
 
 export default function About() {
   return (
