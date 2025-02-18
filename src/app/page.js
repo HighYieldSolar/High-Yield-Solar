@@ -1,10 +1,6 @@
-'use client'; // Add this line at the top of the file
-
-
-
+'use client';
 
 import Head from 'next/head';
-import "./globals.css";
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -37,7 +33,7 @@ export default function Home() {
       alert('Incorrect CAPTCHA answer. Please try again.');
       return;
     }
-    
+
     const formData = new FormData(event.target);
     const response = await fetch('https://formspree.io/f/mgvolodq', {
       method: 'POST',
@@ -56,95 +52,108 @@ export default function Home() {
       <Head>
         <title>High Yield Solar</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        </Head>
+      </Head>
 
-      <header>
-        <div className="top-bar">
-          <div className="business-info">
-            <span className="business-name">High Yield Solar</span>
-            <span className="phone-number">(951)-505-1147 | info@highyieldsolar.com</span>
-          </div>
+      {/* HEADER */}
+      <header className="bg-black text-white p-4 shadow-md fixed top-0 w-full z-50">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold">High Yield Solar</h1>
+          <p className="text-sm">(951)-505-1147 | info@highyieldsolar.com</p>
         </div>
-        <nav>
-          <ul className="nav-links">
-            <li><Link href="/">Home</Link></li>
-            <li><Link href="/">Get a Quote</Link></li>
-            <li><Link href="/services">Services</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
-            <li><Link href="/about">About</Link></li>
-          </ul>
-        </nav>
       </header>
 
-      <div className="quote-container">
-        <div className="quote-info">
-          <Image src="/images/tp.png" width={300} height={300} alt="High Yield Solar Logo" className="business-logo" />
-          <h2>Why Choose High Yield Solar?</h2>
-          <p>We provide top-quality solar panel cleaning, window cleaning, gutter cleaning, and bird proofing services.</p>
-        </div>
+      {/* NAVIGATION */}
+      <nav className="pt-24 pb-4 flex justify-center space-x-4 bg-black shadow-md">
+        <Link className="btn btn-sm btn-outline" href="/">Home</Link>
+        <Link className="btn btn-sm btn-outline" href="/">Get a Quote</Link>
+        <Link className="btn btn-sm btn-outline" href="/services">Services</Link>
+        <Link className="btn btn-sm btn-outline" href="/contact">Contact</Link>
+        <Link className="btn btn-sm btn-outline" href="/about">About</Link>
+      </nav>
 
-        <form onSubmit={handleSubmit} className="quote-form">
-          <div className="form-row">
-            <input type="text" name="first_name" placeholder="FIRST NAME" required />
-            <input type="text" name="last_name" placeholder="LAST NAME" required />
-          </div>
-          <div className="form-row">
-            <input type="email" name="email" placeholder="EMAIL" required />
-            <input id="phone" name="phone" type="tel" placeholder="Enter phone number" required />
-          </div>
-          <label htmlFor="address">Address</label>
-          <input id="address" name="address" type="text" placeholder="Start typing your address..." required />
-
-          <div className="form-row">
-            <input type="text" name="city" placeholder="CITY" required />
-            <select name="state" required>
-              <option value="">STATE</option>
-              <option value="California">California</option>
-            </select>
-          </div>
-
-          <input type="text" name="zip" placeholder="ZIP / POSTAL CODE" required />
-          <p className="form-label">CHOOSE YOUR SERVICE:</p>
-          <div class="service-options">
-            <label>
-              <input type="checkbox" name="service1" value="service1"/>
-              <span class="checkbox-text">Solar Panel Cleaning</span>
-            </label>
-            <label>
-              <input type="checkbox" name="service2" value="service2"/>
-              <span class="checkbox-text">Window Cleaning</span>
-            </label>
-            <label>
-              <input type="checkbox" name="service1" value="service1"/>
-              <span class="checkbox-text">Gutter Cleaning</span>
-            </label>
-            <label>
-              <input type="checkbox" name="service2" value="service2"/>
-              <span class="checkbox-text">Bird Proofing</span>
-            </label>
-          </div>
-
-          <p className="form-label">HOW DID YOU HEAR ABOUT US?</p>
-          <select name="referral" required>
-            <option value="">Select</option>
-            <option value="Google">Google</option>
-            <option value="Facebook">Facebook</option>
-            <option value="Instagram">Instagram</option>
-            <option value="Referral">Referral</option>
-            <option value="Vehicle">Vehicle</option>
-          </select>
-          
-          <textarea name="message" placeholder="Additional Information (Optional)"></textarea>
-
-          <label htmlFor="captcha">What is 3 + 4?</label>
-          <input type="text" id="captcha" name="captcha" required onChange={(e) => setCaptcha(e.target.value)} />
-          
-          <button type="submit">SUBMIT</button>
-          {successMessage && <p style={{ color: 'green' }}>Your request has been sent!</p>}
-        </form>
+      {/* QUOTE SECTION */}
+      <div className="flex flex-col items-center mt-10">
+        <Image src="/images/tp.png" width={600} height={600} alt="High Yield Solar Logo" className="mb-4" />
+        <h2 className="text-3xl text-black font-bold">Why Choose High Yield Solar?</h2>
+        <p className="text-xl text-white  text-center max-w-md mt-2">
+          We provide top-quality solar panel cleaning, window cleaning, gutter cleaning, and bird proofing services.
+        </p>
       </div>
 
-      <footer>
+      {/* FORM */}
+      <form onSubmit={handleSubmit} className="card w-full max-w-lg mx-auto bg-cyan-400 shadow-md rounded-lg p-6 mt-6 border border-black">
+        <h3 className="text-xl font-bold mb-4 text-black">Request a Quote</h3>
+
+        <div className="grid grid-cols-2 gap-4">
+          <input type="text" name="first_name" placeholder="First Name" className="input input-bordered w-full bg-white" required />
+          <input type="text" name="last_name" placeholder="Last Name" className="input input-bordered w-full bg-white" required />
+        </div>
+
+        <div className="grid grid-cols-2 gap-4 mt-4">
+          <input type="email" name="email" placeholder="Email" className="input input-bordered w-full bg-white" required />
+          <input id="phone" name="phone" type="tel" placeholder="Phone Number" className="input input-bordered w-full bg-white" required />
+        </div>
+
+        <label className="text-lg font-semibold block mt-4 text-black">Address</label>
+        <input id="address" name="address" type="text" placeholder="Enter your address..." className="input input-bordered w-full bg-white" required />
+
+        <div className="grid grid-cols-2 gap-4 mt-4">
+          <input type="text" name="city" placeholder="City" className="input input-bordered w-full bg-white" required />
+          <select name="state" className="select select-bordered w-full bg-white" required>
+            <option value="">State</option>
+            <option value="California">California</option>
+          </select>
+        </div>
+
+        <input type="text" name="zip" placeholder="ZIP / Postal Code" className="input input-bordered w-full mt-4 bg-white" required />
+
+        {/* SERVICES */}
+        <p className="mt-4 font-bold text-black">Choose Your Service:</p>
+        <div className="grid grid-cols-2 gap-4 mt-2">
+          <label className="flex items-center space-x-2 text-black font-bold">
+          <input type="checkbox" defaultChecked className="checkbox bg-white [--chkbg:theme(colors.white)] [--chkfg:black] checked:border-black" />
+            <span>Solar Panel Cleaning</span>
+          </label>
+          <label className="flex items-center space-x-2 text-black font-bold">
+          <input type="checkbox" defaultChecked className="checkbox bg-white [--chkbg:theme(colors.white)] [--chkfg:black] checked:border-black" />
+            <span>Window Cleaning</span>
+          </label>
+          <label className="flex items-center space-x-2 text-black font-bold">
+          <input type="checkbox" defaultChecked className="checkbox bg-white [--chkbg:theme(colors.white)] [--chkfg:black] checked:border-black" />
+            <span>Gutter Cleaning</span>
+          </label>
+          <label className="flex items-center space-x-2 text-black font-bold">
+          <input type="checkbox" defaultChecked className="checkbox bg-white [--chkbg:theme(colors.white)] [--chkfg:black] checked:border-black" />
+            <span>Bird Proofing</span>
+          </label>
+        </div>
+
+        {/* REFERRAL */}
+        <p className="mt-4 font-bold text-black">How Did You Hear About Us?</p>
+        <select name="referral" className="select select-bordered w-full mt-2 bg-white" required>
+          <option value="">Select</option>
+          <option value="Google">Google</option>
+          <option value="Facebook">Facebook</option>
+          <option value="Instagram">Instagram</option>
+          <option value="Referral">Referral</option>
+          <option value="Vehicle">Vehicle</option>
+        </select>
+
+        {/* ADDITIONAL INFO */}
+        <textarea name="message" placeholder="Additional Information (Optional)" className="textarea textarea-bordered w-full mt-4 bg-white"></textarea>
+
+        {/* CAPTCHA */}
+        <label className="block mt-4 text-black font-semibold">What is 3 + 4?</label>
+        <input type="text" id="captcha" name="captcha" className="input input-bordered w-full mt-2 bg-white" required onChange={(e) => setCaptcha(e.target.value)} />
+
+       {/* SUBMIT BUTTON */}
+      <div className="flex justify-center w-full mt-4">
+      <button className="text-white btn btn-black btn-wide font-semibold w-full max-w-lg">Submit</button>
+      </div>
+      </form>
+
+      {/* FOOTER */}
+      <footer className="bg-black text-white text-center p-4 mt-10">
         <p>&copy; 2025 High Yield Solar. All rights reserved.</p>
       </footer>
     </>

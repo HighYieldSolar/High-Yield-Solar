@@ -1,11 +1,7 @@
 'use client'; // Add this line at the top of the file
 
-
-
-
 import Head from 'next/head';
-import "../globals.css";
-import Link from 'next/link'; // heloooooooo 
+import Link from 'next/link'; 
 
 export default function About() {
   return (
@@ -16,40 +12,40 @@ export default function About() {
         <title>About Us - High Yield Solar</title>
       </Head>
 
-      <header>
-        <div className="top-bar">
-          <div className="business-info">
-            <span className="business-name">High Yield Solar</span>
-            <span className="phone-number">(951)-505-1147 | info@highyieldsolar.com</span>
-          </div>
+      {/* HEADER */}
+      <header className="bg-black text-white p-4 shadow-md fixed top-0 w-full z-50">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold">High Yield Solar</h1>
+          <p className="text-sm">(951)-505-1147 | info@highyieldsolar.com</p>
         </div>
-        <nav>
-          <ul className="nav-links">
-            <li><Link href="/">Home</Link></li>
-            <li><Link href="/">Get a Quote</Link></li>
-            <li><Link href="/services">Services</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
-            <li><Link href="/about">About</Link></li>
-          </ul>
-        </nav>
       </header>
 
-      <div className="main-content">
-        <h1>About Us</h1>
-        <div className="about-container">
+      {/* NAVIGATION */}
+      <nav className="pt-24 pb-4 flex justify-center space-x-4 bg-black shadow-md">
+        <Link className="btn btn-sm btn-outline" href="/">Home</Link>
+        <Link className="btn btn-sm btn-outline" href="/">Get a Quote</Link>
+        <Link className="btn btn-sm btn-outline" href="/services">Services</Link>
+        <Link className="btn btn-sm btn-outline" href="/contact">Contact</Link>
+        <Link className="btn btn-sm btn-outline" href="/about">About</Link>
+      </nav>
+
+      {/* MAIN CONTENT */}
+      <div className="container mx-auto px-4 mt-10">
+        <h1 className="text-3xl font-bold text-center text-black mb-6">About Us</h1>
+        <div className="text-lg text-black space-y-6">
           <p>
             High Yield Solar is a leading provider of solar panel cleaning, window cleaning, gutter cleaning, and bird proofing services.
             Our team is dedicated to ensuring that your home or business remains clean, efficient, and protected from the elements. With
             years of experience in the industry, we provide high-quality, reliable services to meet all your needs.
           </p>
-          <h2>Our Mission</h2>
+          <h2 className="text-2xl font-semibold text-black">Our Mission</h2>
           <p>
             Our mission is to provide top-notch cleaning and maintenance services for solar panels and other key aspects of your home.
             We prioritize customer satisfaction, safety, and the highest quality service to ensure your home stays clean, functional,
             and energy-efficient.
           </p>
-          <h2>Why Choose Us?</h2>
-          <ul>
+          <h2 className="text-2xl font-semibold text-black">Why Choose Us?</h2>
+          <ul className="list-disc pl-6">
             <li>Expert team with years of experience</li>
             <li>Safe, effective cleaning methods</li>
             <li>Affordable and reliable services</li>
@@ -58,7 +54,8 @@ export default function About() {
         </div>
       </div>
 
-      <footer>
+      {/* FOOTER */}
+      <footer className="bg-black text-white text-center p-4 mt-10">
         <p>&copy; 2025 High Yield Solar. All rights reserved.</p>
       </footer>
     </>
