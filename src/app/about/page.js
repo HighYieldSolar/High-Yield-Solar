@@ -26,7 +26,7 @@ export default function About() {
         <nav>
           <ul className="nav-links">
             <li><Link href="/">Home</Link></li>
-            <li><Link href="/quote">Get a Quote</Link></li>
+            <li><Link href="/">Get a Quote</Link></li>
             <li><Link href="/services">Services</Link></li>
             <li><Link href="/contact">Contact</Link></li>
             <li><Link href="/about">About</Link></li>
