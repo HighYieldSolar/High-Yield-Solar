@@ -141,7 +141,6 @@ export default function Home() {
           
           <button type="submit">SUBMIT</button>
           {successMessage && <p style={{ color: 'green' }}>Your request has been sent!</p>}
-          <input />
         </form>
       </div>
 
